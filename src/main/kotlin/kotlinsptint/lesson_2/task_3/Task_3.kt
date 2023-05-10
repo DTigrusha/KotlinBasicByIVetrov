@@ -6,7 +6,7 @@ fun main() {
     val travelTime = 457
     var hourOfArrival = (travelTime / 60) + hourOfDeparture
     var minuteOfArrival = (travelTime % 60) + minuteOfDeparture
-    if (minuteOfArrival > 60) {
+    if (minuteOfArrival >= 60) {
         hourOfArrival += minuteOfArrival / 60
         minuteOfArrival %= 60
     }
