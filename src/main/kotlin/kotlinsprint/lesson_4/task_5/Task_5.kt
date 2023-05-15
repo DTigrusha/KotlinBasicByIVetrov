@@ -5,29 +5,27 @@ fun main() {
     val recommendedSizeOfCrew = 70
     val provision = 50
 
-    println("Укажите, есть ли повреждения корпуса корабля: да/нет?")
+    println("Укажите, есть ли повреждения корпуса корабля: true/false?")
 
-    val inputDamage = readln()
-    val damage = inputDamage == "да"
+    val inputDamage = readln().toBoolean()
 
     println("Укажите текущую численность экипажа:")
 
-    val inputSizeOfCrew = readln()
+    val inputSizeOfCrew = readln().toInt()
 
     println("Укажите количество ящиков проовизии:")
 
-    val inputProvision = readln()
+    val inputProvision = readln().toInt()
 
-    println("Укажите, благоприятны ли метеоусловия: да/нет?")
+    println("Укажите, благоприятны ли метеоусловия: true/false?")
 
-    val inputWeatherConditions = readln()
-    val weatherConditions = inputWeatherConditions == "да"
+    val inputWeatherConditions = readln().toBoolean()
 
-    println(if ((!damage && (inputSizeOfCrew.toInt() in minSizeOfCrew until recommendedSizeOfCrew)
-        && inputProvision.toInt() > provision && (weatherConditions || !weatherConditions)) || (damage
-                && inputSizeOfCrew.toInt() == recommendedSizeOfCrew && inputProvision.toInt() > provision
-                && weatherConditions)) "Все условия соблюдены, корабль может отправляться в рейс." else
-                    "Условия отправки в рейс не соблюдены. Корабль отплыть не может.")
+    println(if ((!inputDamage && (inputSizeOfCrew in minSizeOfCrew until recommendedSizeOfCrew)
+        && inputProvision > provision && (inputWeatherConditions || !inputWeatherConditions)) || (inputDamage
+                && inputSizeOfCrew == recommendedSizeOfCrew && inputProvision > provision
+                && inputWeatherConditions)) "Все условия соблюдены, корабль может отправляться в рейс."
+    else "Условия отправки в рейс не соблюдены. Корабль отплыть не может.")
 
 
 }
