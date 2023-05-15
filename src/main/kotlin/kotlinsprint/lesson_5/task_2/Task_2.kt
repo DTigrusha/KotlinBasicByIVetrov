@@ -7,7 +7,7 @@ fun main() {
 
     println("Укажите, пожалуйста, год Вашего рождения:")
 
-    val userYearOfBirth = readLine()!!.toInt()
+    val userYearOfBirth = readln().toInt()
 
     if ((currentYear - userYearOfBirth) >= AGE_OF_MAJORITY) println("Показать экран со скрытым контентом.")
 }
