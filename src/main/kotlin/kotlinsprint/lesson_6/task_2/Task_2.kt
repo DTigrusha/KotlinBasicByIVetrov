@@ -10,6 +10,7 @@ fun main() {
         Thread.sleep(1000)
         counter++
     }
-     println("Прошло $numberOfSeconds секунд.")
+
+    println("Прошло $numberOfSeconds секунд.")
 
 }
