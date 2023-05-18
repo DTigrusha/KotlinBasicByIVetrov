@@ -9,10 +9,8 @@ fun main() {
     val saturdayViews = 4
     val sundayViews = 2
     var sumOfViews = 0
-    val weekViews = arrayOf(
-        mondayViews, tuesdayViews, wednesdayViews, thursdayViews, fridayViews, saturdayViews,
-        sundayViews
-    )
+    val weekViews =
+        arrayOf(mondayViews, tuesdayViews, wednesdayViews, thursdayViews, fridayViews, saturdayViews, sundayViews)
 
     for (i in weekViews.indices) {
         sumOfViews += weekViews[i]
