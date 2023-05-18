@@ -8,11 +8,11 @@ fun main() {
     }
 
     println("В рецепте есть базовые ингредиенты: $ingredients.\nЖелаете добавить еще?")
-    val userAnswer = readln()
+    val userAnswer = readln().lowercase()
 
     if (userAnswer == "да") {
         println("Какой ингредиент Вы хотите добавить?")
-        val newIngredient = readln()
+        val newIngredient = readln().lowercase()
 
         ingredients.add(newIngredient)
 
