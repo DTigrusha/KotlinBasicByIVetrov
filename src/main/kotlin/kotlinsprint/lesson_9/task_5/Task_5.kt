@@ -4,29 +4,29 @@ import java.util.*
 
 fun main() {
     val numberOfIngredients = 5
-    val ingredients = mutableListOf<String>()
+    val ingredients = mutableSetOf<String>()
+    var ingredient: String
 
     for (i in 0 until numberOfIngredients) {
         println("Введите название ингредиента ${i + 1}:")
-        var ingredient = readln()
-
-        if (!ingredients.contains(ingredient)) {
-            ingredients.add(ingredient)
-        } else {
-            while (ingredients.contains(ingredient)) {
-                println("Такой ингредиент уже есть в списке. Введите другой ингредиент:")
-                ingredient = readln()
-            }
-
-            ingredients.add(ingredient)
-        }
+        ingredient = readln()
+        ingredients.add(ingredient)
     }
 
-    ingredients.sort()
+    while (ingredients.size != numberOfIngredients) {
+        println(
+            "Вы добавили ${ingredients.size} ингредиента(ов). Введите название ингридиента ${ingredients.size + 1}:"
+        )
+        ingredient = readln()
+
+        ingredients.add(ingredient)
+    }
+
+    val sortedListOfIngredients = ingredients.toSortedSet()
 
     val separator = ", "
     val postfix = "."
-    val result = ingredients.joinToString(separator, "", postfix).replaceFirstChar {
+    val result = sortedListOfIngredients.joinToString(separator, "", postfix).replaceFirstChar {
         if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString()
     }
 
