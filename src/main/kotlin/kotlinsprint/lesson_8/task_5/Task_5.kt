@@ -4,12 +4,11 @@ fun main() {
     println("Введите количество ингредиентов, которые вы хотите добавить в список:")
     val numberOfIngredients = readln().toInt()
 
-    val ingredients = arrayListOf<String>()
+    val ingredients = arrayOfNulls<String>(numberOfIngredients)
 
     for (i in 0 until numberOfIngredients) {
         println("Введите название ингредиента №${i + 1}:")
         val ingredient = readln()
-        ingredients.add(ingredient)
+        ingredients[i] = ingredient
     }
-    val arrayOfIngredients = ingredients.toTypedArray()
 }
