@@ -8,21 +8,20 @@ fun main() {
     }
 
     println("Введите название ингредиента, который Вы хотите заменить:")
-    val ingredientToChange = readln()
+    val ingredientToChange: String = readln()
 
-    for (i in ingredients) {
-        if (i == ingredientToChange) {
-            println("Введите название ингредиента, который Вы хотели бы добавить:")
-            val newIngredient = readln()
+    if (ingredientToChange in ingredients) {
+        println("Введите название ингредиента, который Вы хотели бы добавить:")
+        val newIngredient = readln()
 
-            ingredients[ingredients.indexOf(i)] = newIngredient
-            break
-        } else if (ingredientToChange !in ingredients) {
-            println("Такого ингредиента нет в списке.")
-            return
+        ingredients[ingredients.indexOf(ingredientToChange)] = newIngredient
+
+        println("Готово! Вы сохранили следующий список ингредиентов:")
+
+        for (i in ingredients) {
+            println("${ingredients.indexOf(i) + 1}. $i")
         }
-    }
-    for (i in ingredients) {
-        println("${ingredients.indexOf(i) + 1}. $i")
+    } else if (ingredientToChange !in ingredients) {
+        println("Такого ингредиента нет в списке.")
     }
 }
