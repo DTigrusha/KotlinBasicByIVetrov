@@ -4,9 +4,7 @@ fun main() {
     println("Введите пять ингредиентов через запятую:")
     val inputIngredients = readln()
 
-    val listOfIngredients = inputIngredients.split(", ").toMutableList()
-
-    listOfIngredients.sort()
+    val listOfIngredients = inputIngredients.split(", ").sorted()
 
     listOfIngredients.forEach {
         println(it)
