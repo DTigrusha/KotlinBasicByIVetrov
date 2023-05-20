@@ -13,7 +13,7 @@ fun createPassword(lengthOfPassword: Int): String {
 
     for (i in 1..lengthOfPassword) {
         val even = (0..9).random()
-        val odd = listOf('!', '"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-', '.', '/', ' ').random()
+        val odd = (' '..'/').random()
         if (i % 2 != 0) {
             generatedPassword += odd
         } else {
