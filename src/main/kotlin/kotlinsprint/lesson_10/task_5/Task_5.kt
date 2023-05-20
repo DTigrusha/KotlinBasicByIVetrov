@@ -1,11 +1,11 @@
 package kotlinsprint.lesson_10.task_5
 
+data class UserData(val userLogin: String, val generatedPassword: String)
+
 fun main() {
     val (userLogin, generatedPassword) = registration()
     authoriseUser(UserData(userLogin, generatedPassword))
 }
-
-data class UserData(val userLogin: String, val generatedPassword: String)
 
 fun registration(): UserData {
     println(
@@ -26,13 +26,8 @@ fun createPassword(): String {
     var generatedPassword = ""
 
     for (i in 1..lengthOfPassword) {
-        val even = (0..9).random()
-        val odd = listOf('!', '"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-', '.', '/', ' ').random()
-        if (i % 2 != 0) {
-            generatedPassword += odd
-        } else {
-            generatedPassword += even
-        }
+        val range = ('!'..'9').random()
+        generatedPassword += range
     }
     return generatedPassword
 }
@@ -65,7 +60,7 @@ fun checkUserAuthorisation(checkingUserData: Array<String>) {
     }
 }
 
-fun generateAuthorisationCode(){
+fun generateAuthorisationCode() {
     do {
         val authorizationCode = (1000..9999).random()
 
