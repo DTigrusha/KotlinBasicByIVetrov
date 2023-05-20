@@ -21,7 +21,7 @@ fun main() {
         for (i in ingredients) {
             println("${ingredients.indexOf(i) + 1}. $i")
         }
-    } else if (ingredientToChange !in ingredients) {
+    } else {
         println("Такого ингредиента нет в списке.")
     }
 }
