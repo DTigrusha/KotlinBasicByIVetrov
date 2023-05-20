@@ -1,5 +1,7 @@
 package kotlinsprint.lesson_10.task_4
 
+data class ResultOfThrowing(val firstDice: Int, val secondDice: Int)
+
 fun main() {
     val numberOfHumanVictories = arrayOf(0)
     playGame(numberOfHumanVictories)
@@ -25,8 +27,6 @@ fun playGame(numberOfHumanVictories: Array<Int>): Array<Int> {
     continueGame(numberOfHumanVictories)
     return numberOfHumanVictories
 }
-
-data class ResultOfThrowing(val firstDice: Int, val secondDice: Int)
 
 fun throwDice(): ResultOfThrowing {
     val firstDice = (1..6).random()
