@@ -13,17 +13,7 @@ fun main() {
         ingredients.add(ingredient)
     }
 
-    while (ingredients.size != numberOfIngredients) {
-        println(
-            "Вы добавили ${ingredients.size} ингредиента(ов). Введите название ингридиента ${ingredients.size + 1}:"
-        )
-        ingredient = readln()
-
-        ingredients.add(ingredient)
-    }
-
     val sortedListOfIngredients = ingredients.toSortedSet()
-
     val separator = ", "
     val postfix = "."
     val result = sortedListOfIngredients.joinToString(separator, "", postfix).replaceFirstChar {
