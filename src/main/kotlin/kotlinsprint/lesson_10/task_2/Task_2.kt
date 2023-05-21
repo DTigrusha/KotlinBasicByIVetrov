@@ -10,11 +10,12 @@ fun main() {
     println("Укажите пароль:")
     val registeredPassword = readln()
 
-    val result = checkPasswordLength(registeredPassword)
-
-    println(if (result) "Добро пожаловать в приложение!" else "Логин или пароль недостаточно длинные.")
+    println(
+        if (checkPasswordLength(registeredPassword)) "Добро пожаловать в приложение!"
+        else "Логин или пароль недостаточно длинные."
+    )
 }
 
-const val CHECK_NUMBER = 4
 fun checkPasswordLength(registeredPassword: String): Boolean = registeredPassword.length >= CHECK_NUMBER
 
+const val CHECK_NUMBER = 4
