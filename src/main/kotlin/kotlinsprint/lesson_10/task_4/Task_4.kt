@@ -2,12 +2,9 @@ package kotlinsprint.lesson_10.task_4
 
 data class ResultOfThrowing(val firstDice: Int, val secondDice: Int)
 
-fun main() {
-    val numberOfHumanVictories = arrayOf(0)
-    playGame(numberOfHumanVictories)
-}
+val numberOfHumanVictories = arrayOf(0)
 
-fun playGame(numberOfHumanVictories: Array<Int>): Array<Int> {
+fun main() {
     println("Добро пожаловать в игру Dice!\nСейчас твой ход, бросай кости!")
     val (firstUserDice, secondUserDice) = throwDice()
     val userResult = firstUserDice + secondUserDice
@@ -16,6 +13,10 @@ fun playGame(numberOfHumanVictories: Array<Int>): Array<Int> {
     val (firstComputerDice, secondComputerDice) = throwDice()
     val computerResult = firstComputerDice + secondComputerDice
 
+    checkGameResult(numberOfHumanVictories, userResult, computerResult)
+}
+
+fun checkGameResult(numberOfHumanVictories: Array<Int>, userResult: Int, computerResult: Int): Array<Int> {
     if (userResult > computerResult) {
         println("Победило человечество!")
         numberOfHumanVictories[0] = numberOfHumanVictories[0] + 1
@@ -25,6 +26,7 @@ fun playGame(numberOfHumanVictories: Array<Int>): Array<Int> {
         println("Победила машина!")
     }
     continueGame(numberOfHumanVictories)
+
     return numberOfHumanVictories
 }
 
@@ -40,7 +42,7 @@ fun continueGame(numberOfHumanVictories: Array<Int>) {
     val userAnswer = readln().lowercase()
 
     if (userAnswer == "да") {
-        playGame(numberOfHumanVictories)
+        main()
     } else {
         println("Игра окончена!\nВы выиграли ${numberOfHumanVictories[0]} раз(а).")
     }
