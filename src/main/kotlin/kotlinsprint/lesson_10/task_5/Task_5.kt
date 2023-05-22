@@ -32,14 +32,14 @@ fun createPassword(): String {
     return generatedPassword
 }
 
-fun authoriseUser(UserData: UserData): Array<String> {
+fun authoriseUser(userData: UserData): Array<String> {
     println("Для авторизации в приложении введите Ваш логин:")
     val userInputLogin = readln()
 
     println("Теперь введите Ваш пароль:")
     val userInputPassword = readln()
 
-    val (userLogin, generatedPassword) = UserData
+    val (userLogin, generatedPassword) = userData
     val checkingUserData = arrayOf(userLogin, userInputLogin, generatedPassword, userInputPassword)
 
     checkUserAuthorisation(checkingUserData)
@@ -49,7 +49,14 @@ fun authoriseUser(UserData: UserData): Array<String> {
 
 fun checkUserAuthorisation(checkingUserData: Array<String>) {
     if ((checkingUserData[0] == checkingUserData[1]) && (checkingUserData[2] == checkingUserData[3])) {
-        generateAuthorisationCode()
+        do {
+            val authorizationCode = (1000..9999).random()
+
+            println("Ваш код авторизации: $authorizationCode.\nВведите код ниже:")
+            val userInput = readln().toInt()
+        } while (userInput != authorizationCode)
+
+        println("Вы успешно авторизованы!\nДобро пожаловать в приложение!")
     } else {
         println("Вы ввели неверные данные!")
 
@@ -58,16 +65,4 @@ fun checkUserAuthorisation(checkingUserData: Array<String>) {
 
         authoriseUser(UserData(userLogin, generatedPassword))
     }
-}
-
-fun generateAuthorisationCode() {
-    do {
-        val authorizationCode = (1000..9999).random()
-
-        println("Ваш код авторизации: $authorizationCode.\nВведите код ниже:")
-
-        val userInput = readln().toInt()
-    } while (userInput != authorizationCode)
-
-    println("Вы успешно авторизованы!\nДобро пожаловать в приложение!")
 }
