@@ -34,53 +34,54 @@ class Member(
 }
 
 fun main() {
+    val states: List<String> = listOf("разговаривает", "пользователь заглушен", "микрофон выключен")
 
     val member1 = Member(
         avatar = "Медведь",
         nickname = "Bear",
-        state = "разговаривает",
+        state = states[0],
     )
 
     val member2 = Member(
         avatar = "Волк",
         nickname = "Wolf",
-        state = "разговаривает",
+        state = states[0],
     )
 
     val member3 = Member(
         avatar = "Кот",
         nickname = "Cat",
-        state = "пользователь заглушен",
+        state = states[1],
     )
 
     val member4 = Member(
         avatar = "Кролик",
         nickname = "Rabbit",
-        state = "микрофон выключен",
+        state = states[2],
     )
 
     val member5 = Member(
         avatar = "Бегемот",
         nickname = "Hippo",
-        state = "разговаривает",
+        state = states[0],
     )
 
     val member6 = Member(
         avatar = "Лошадь",
         nickname = "Horse",
-        state = "разговаривает",
+        state = states[0],
     )
 
     val member7 = Member(
         avatar = "Собака",
         nickname = "Dog",
-        state = "разговаривает",
+        state = states[0],
     )
 
     val member8 = Member(
         avatar = "Мышь",
         nickname = "Mouse",
-        state = "разговаривает",
+        state = states[0],
     )
 
     val room1 = Room(
