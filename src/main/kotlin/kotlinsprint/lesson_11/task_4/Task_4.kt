@@ -4,25 +4,50 @@ class Contact(
     val photo: String,
     val firstName: String,
     val secondName: String,
-    val write: String = "написать",
-    val call: String = "вызов",
-    val video: String = "видео",
-    val email: String = "почта",
     val mobileNumber: String,
     val homeNumber: String,
-    val faceTime: Array<String> = arrayOf("видео", "вызов"),
     val iCloud: String,
     val contacts: List<ClosePeople>,
 ) {
+
+    fun writeSMS() {
+        print("[написать]")
+    }
+
+    fun makeCall() {
+        print("[вызов]")
+    }
+
+    fun makeVideoCall() {
+        print("[видео]")
+    }
+
+    fun sendEmail() {
+        print("[почта]")
+    }
+
+    fun faceTimeVideoCall() {
+        print("[видео]")
+    }
+
+    fun faceTimeCall() {
+        print("[вызов]")
+    }
+
     fun printContactInfo() {
         println("$photo\n$firstName $secondName")
         println()
-        println("[$write]   [$call]   [$video]   [$email]")
-        println()
+        writeSMS()
+        makeCall()
+        makeVideoCall()
+        sendEmail()
+        println("\n")
         println("сотовый\n$mobileNumber\nдомашний\n$homeNumber")
         println()
-        println("FaceTime               [${faceTime[0]}]   [${faceTime[1]}]")
-        println()
+        print("FaceTime          ")
+        faceTimeVideoCall()
+        faceTimeCall()
+        println("\n")
         println("iCloud\n$iCloud")
         println()
 
