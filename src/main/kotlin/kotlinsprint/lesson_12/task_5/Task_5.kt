@@ -3,7 +3,7 @@ package kotlinsprint.lesson_12.task_5
 class WeatherData(
     val dayTemperature: Int,
     val nightTemperature: Int,
-    val isRainy: String,
+    val isRainy: Boolean,
     val atmosphericPressure: Int,
 )
 
@@ -16,7 +16,7 @@ fun main() {
         val weatherData = WeatherData(
             dayTemperature = (10..40).random(),
             nightTemperature = (0..30).random(),
-            isRainy = listOf("да", "нет").random(),
+            isRainy = listOf(true, false).random(),
             atmosphericPressure = (735..765).random(),
         )
         listOfWeatherData.add(weatherData)
@@ -28,11 +28,11 @@ fun main() {
     var sumOfAtmosphericPressure = 0
 
 
-    for (i in 0 until listOfWeatherData.size) {
-        sumOfDayTemperatures += listOfWeatherData[i].dayTemperature
-        sumOfNightTemperatures += listOfWeatherData[i].nightTemperature
-        sumOfRainyDay += if (listOfWeatherData[i].isRainy == "да") 1 else 0
-        sumOfAtmosphericPressure += listOfWeatherData[i].atmosphericPressure
+    for (weatherDataItem in listOfWeatherData) {
+        sumOfDayTemperatures += weatherDataItem.dayTemperature
+        sumOfNightTemperatures += weatherDataItem.nightTemperature
+        sumOfRainyDay += if (weatherDataItem.isRainy) 1 else 0
+        sumOfAtmosphericPressure += weatherDataItem.atmosphericPressure
     }
 
     val averageDayTemperature = sumOfDayTemperatures / numberOfObjects
