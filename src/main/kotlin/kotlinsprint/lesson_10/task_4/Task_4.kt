@@ -2,18 +2,22 @@ package kotlinsprint.lesson_10.task_4
 
 data class ResultOfThrowing(val firstDice: Int, val secondDice: Int)
 
-val numberOfHumanVictories = arrayOf(0)
+var numberOfHumanVictories = arrayOf(0)
 
 fun main() {
-    println("Добро пожаловать в игру Dice!\nСейчас твой ход, бросай кости!")
-    val (firstUserDice, secondUserDice) = throwDice()
-    val userResult = firstUserDice + secondUserDice
+    var userAnswer: String
+    do {
+        println("Добро пожаловать в игру Dice!\nСейчас твой ход, бросай кости!")
+        val (firstUserDice, secondUserDice) = throwDice()
+        val userResult = firstUserDice + secondUserDice
 
-    println("Теперь ход компьютера. Он бросает кости!")
-    val (firstComputerDice, secondComputerDice) = throwDice()
-    val computerResult = firstComputerDice + secondComputerDice
+        println("Теперь ход компьютера. Он бросает кости!")
+        val (firstComputerDice, secondComputerDice) = throwDice()
+        val computerResult = firstComputerDice + secondComputerDice
 
-    checkGameResult(numberOfHumanVictories, userResult, computerResult)
+        numberOfHumanVictories = checkGameResult(numberOfHumanVictories, userResult, computerResult)
+        userAnswer = continueGame(numberOfHumanVictories)
+    } while (userAnswer == "да")
 }
 
 fun checkGameResult(numberOfHumanVictories: Array<Int>, userResult: Int, computerResult: Int): Array<Int> {
@@ -25,8 +29,6 @@ fun checkGameResult(numberOfHumanVictories: Array<Int>, userResult: Int, compute
     } else {
         println("Победила машина!")
     }
-    continueGame(numberOfHumanVictories)
-
     return numberOfHumanVictories
 }
 
@@ -37,13 +39,12 @@ fun throwDice(): ResultOfThrowing {
     return ResultOfThrowing(firstDice, secondDice)
 }
 
-fun continueGame(numberOfHumanVictories: Array<Int>) {
+fun continueGame(numberOfHumanVictories: Array<Int>): String {
     println("Хотите бросить кости еще раз?\nВведите \"да\" или \"нет\":")
     val userAnswer = readln().lowercase()
 
-    if (userAnswer == "да") {
-        main()
-    } else {
+    if (userAnswer != "да") {
         println("Игра окончена!\nВы выиграли ${numberOfHumanVictories[0]} раз(а).")
     }
+    return userAnswer
 }
