@@ -1,6 +1,7 @@
 package kotlinsprint.lesson_14.task_5
 
 import kotlin.math.pow
+import kotlin.math.roundToInt
 
 const val PI = 3.14
 
@@ -18,11 +19,11 @@ class Circle(
 ) : Figure(color) {
 
     override fun countSquare(): Int {
-        return (PI * radius.toDouble().pow(2)).toInt()
+        return (PI * radius.toDouble().pow(2)).roundToInt()
     }
 
     override fun countPerimeter(): Int {
-        return (2 * (PI * radius)).toInt()
+        return ((PI * radius) / 2).roundToInt()
     }
 
 }
