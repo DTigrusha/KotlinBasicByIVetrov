@@ -14,7 +14,7 @@ abstract class ForumMembers {
 
 }
 
-class User (override val userType: String = "Пользователь форума"): ForumMembers()
+class User(override val userType: String = "Пользователь форума"): ForumMembers()
 
 class Administrator(
     override val userType: String = "Администратор форума",
