@@ -14,13 +14,15 @@ class Planet(
     isInhabitable: Boolean,
     isWatery: Boolean,
     isFitForLanding: Boolean,
-    val isHasSatellite: Boolean,
+    val satellites: MutableList<Satellite>,
 ) : CelestialBody(name, isAtmospheric, isInhabitable, isWatery, isFitForLanding) {
 
-    fun printPlanetName() {
-        println("Название планеты: $name.")
+    fun printPlanetAndSatellitesName() {
+        println("Название планеты: $name.\nНазвания ее спутников: ")
+        satellites.forEach {
+            println(it.name)
+        }
     }
-
 }
 
 class Satellite(
@@ -29,24 +31,9 @@ class Satellite(
     isInhabitable: Boolean,
     isWatery: Boolean,
     isFitForLanding: Boolean,
-) : CelestialBody(name, isAtmospheric, isInhabitable, isWatery, isFitForLanding) {
-
-    fun printSatelliteName() {
-        println("Название спутникa: $name.")
-    }
-
-}
+) : CelestialBody(name, isAtmospheric, isInhabitable, isWatery, isFitForLanding)
 
 fun main() {
-
-    val planet1 = Planet(
-        "Селестия",
-        true,
-        true,
-        true,
-        true,
-        true,
-    )
 
     val satellite1 = Satellite(
         "Пинки пай",
@@ -64,8 +51,15 @@ fun main() {
         false,
     )
 
-    planet1.printPlanetName()
-    satellite1.printSatelliteName()
-    satellite2.printSatelliteName()
+    val planet1 = Planet(
+        "Селестия",
+        true,
+        true,
+        true,
+        true,
+        mutableListOf(satellite1, satellite2),
+    )
+
+    planet1.printPlanetAndSatellitesName()
 
 }
