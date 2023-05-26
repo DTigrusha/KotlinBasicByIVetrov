@@ -1,9 +1,8 @@
 package kotlinsprint.lesson_14.task_5
 
+import kotlin.math.PI
 import kotlin.math.pow
 import kotlin.math.roundToInt
-
-const val PI = 3.14
 
 abstract class Figure(val color: String) {
 
@@ -23,7 +22,7 @@ class Circle(
     }
 
     override fun countPerimeter(): Int {
-        return ((PI * radius) / 2).roundToInt()
+        return (2 * (PI * radius)).roundToInt()
     }
 
 }
