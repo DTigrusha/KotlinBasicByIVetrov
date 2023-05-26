@@ -5,17 +5,13 @@ import kotlin.math.roundToInt
 
 const val PI = 3.14
 
-private class Circle {
+private class Circle(private var radius: Int = 10) {
 
-    fun setOfRadius(radius: Int): Int {
-        return radius
-    }
-
-    fun countSquare(radius: Int): Int {
+    fun countSquare(): Int {
         return (PI * radius.toDouble().pow(2)).roundToInt()
     }
 
-    fun countCircumference(radius: Int): Int {
+    fun countCircumference(): Int {
         return ((PI * radius) / 2).roundToInt()
     }
 }
@@ -23,9 +19,8 @@ private class Circle {
 fun main() {
 
     val circle = Circle()
-    val radius = circle.setOfRadius(10)
 
-    println("Площадь круга: ${circle.countSquare(radius)}.")
-    println("Длина окружности круга: ${circle.countCircumference(radius)}")
+    println("Площадь круга: ${circle.countSquare()}")
+    println("Длина окружности круга: ${circle.countCircumference()}")
 
 }
