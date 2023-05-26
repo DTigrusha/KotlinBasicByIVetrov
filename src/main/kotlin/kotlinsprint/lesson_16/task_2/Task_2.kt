@@ -12,7 +12,7 @@ private class Circle(private var radius: Int = 10) {
     }
 
     fun countCircumference(): Int {
-        return ((PI * radius) / 2).roundToInt()
+        return (2 * (PI * radius)).roundToInt()
     }
 }
 
