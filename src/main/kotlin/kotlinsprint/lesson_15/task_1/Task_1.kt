@@ -2,21 +2,15 @@ package kotlinsprint.lesson_15.task_1
 
 interface Flyable {
 
-    fun fly() {
-        print("умеет летать")
-    }
+    fun fly() = "умеет летать"
 
 }
 
 interface Floating {
 
-    fun floatUnderWater() {
-        print("умеет плавать под водой")
-    }
+    fun floatUnderWater() = "умеет плавать под водой"
 
-    fun floatOnWater() {
-        print("умеет плавать на воде")
-    }
+    fun floatOnWater() = "умеет плавать на воде"
 
 }
 
@@ -32,20 +26,10 @@ fun main() {
     val gull = Gull()
     val duck = Duck()
 
-    print("${crucian.name} ")
-    crucian.floatUnderWater()
-    println(".")
 
-    print("${gull.name}: ")
-    gull.fly()
-    print(" и ")
-    gull.floatOnWater()
-    println(".")
-
-    print("${duck.name}: ")
-    duck.fly()
-    print(" и ")
-    duck.floatOnWater()
-    println(".")
+    println(
+        "${crucian.name} ${crucian.floatUnderWater()}.\n${gull.name} ${gull.fly()} и ${gull.floatOnWater()}." +
+                "\n${duck.name} ${duck.fly()} и ${duck.floatOnWater()}."
+    )
 
 }
