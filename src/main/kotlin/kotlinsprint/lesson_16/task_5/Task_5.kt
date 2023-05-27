@@ -9,20 +9,25 @@ private class Player(
     fun damage(damage: Int): Int {
         health -= damage
         if (health <= 0) {
-            death(health)
+            death()
         }
 
         return health
     }
 
     fun cure(): Int {
-        health += 5
+
+        if (health > 0) {
+            health += 5
+        } else {
+            health = 0
+        }
 
         return health
     }
 
-    private fun death(health: Int) {
-        this.health = 0
+    private fun death() {
+        health = 0
         impactForce = 0
 
         print("Игрок \"$name\" погиб.")
@@ -42,5 +47,6 @@ fun main() {
     player.damage(8)
     player.cure()
     player.damage(10)
+    player.cure()
 
 }
