@@ -2,33 +2,41 @@ package kotlinsprint.lesson_15.task_5
 
 interface CarMoving {
 
-    fun move() {
-        println("- перемещается")
-    }
+    fun move() = "- перемещается"
 }
 
-interface Transporting {
+interface CargoTransporting {
 
-    fun cargoTransporting() {
-        print("- перевозит груз весом - ")
-    }
-
-    fun passengerTransporting() {
-        print("- перевозит пассажиров в количестве - ")
-    }
+    fun cargoTransporting() = "- перевозит груз весом - "
 }
 
-abstract class Car : CarMoving, Transporting {
+interface PassengerTransporting {
+
+    fun passengerTransporting() = "- перевозит пассажиров в количестве - "
+}
+
+abstract class Car : CarMoving, PassengerTransporting {
 
     abstract val name: String
     abstract val numberOfPassengers: Int
+
+    open fun printCarInfo() {
+        println("$name:\n${move()}\n${passengerTransporting()} $numberOfPassengers чел.")
+    }
+
 }
 
 class Truck(
     override val name: String,
     override val numberOfPassengers: Int,
     val cargoWeight: Int,
-) : Car()
+) : Car(), CargoTransporting {
+
+    override fun printCarInfo() {
+        super.printCarInfo()
+        println("${cargoTransporting()} $cargoWeight тн.")
+    }
+}
 
 class PassengerCar(
     override val name: String,
@@ -44,33 +52,11 @@ fun main() {
     val passengerCar2 = PassengerCar("Машина2", 2)
     val passengerCar3 = PassengerCar("Машина3", 1)
 
-    println("${truck1.name}:")
-    truck1.move()
-    truck1.passengerTransporting()
-    println("${truck1.numberOfPassengers} чел.")
-    truck1.cargoTransporting()
-    println("${truck1.cargoWeight} тн.\n")
+    truck1.printCarInfo()
+    truck2.printCarInfo()
 
-    println("${truck2.name}:")
-    truck2.move()
-    truck2.passengerTransporting()
-    println("${truck2.numberOfPassengers} чел.")
-    truck2.cargoTransporting()
-    println("${truck2.cargoWeight} тн.\n")
-
-    println("${passengerCar1.name}:")
-    passengerCar1.move()
-    passengerCar1.passengerTransporting()
-    println("${passengerCar1.numberOfPassengers} чел.\n")
-
-    println("${passengerCar2.name}:")
-    passengerCar2.move()
-    passengerCar2.passengerTransporting()
-    println("${passengerCar2.numberOfPassengers} чел.\n")
-
-    println("${passengerCar3.name}:")
-    passengerCar3.move()
-    passengerCar3.passengerTransporting()
-    println("${passengerCar3.numberOfPassengers} чел.\n")
+    passengerCar1.printCarInfo()
+    passengerCar2.printCarInfo()
+    passengerCar3.printCarInfo()
 
 }
