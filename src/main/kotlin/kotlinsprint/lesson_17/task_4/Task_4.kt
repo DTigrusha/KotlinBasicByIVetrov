@@ -8,10 +8,12 @@ class Package(
 
     var location = "склад"
         set(value) {
-            field = value
+            if (value != location) {
+                field = value
 
-            if (value == field) {
-                numberOfMoves++
+                if (value == field) {
+                    numberOfMoves++
+                }
             }
         }
 
@@ -23,6 +25,7 @@ fun main() {
 
     pack.location = "сортировочный центр"
     pack.location = "сортировочный центр - 2"
+    pack.location = "сортировочный центр - 3"
     pack.location = "сортировочный центр - 3"
 
     println("${pack.numberOfMoves}")
