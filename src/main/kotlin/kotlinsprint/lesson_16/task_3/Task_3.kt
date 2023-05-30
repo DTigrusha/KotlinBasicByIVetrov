@@ -2,7 +2,7 @@ package kotlinsprint.lesson_16.task_3
 
 private class User(
     val login: String,
-    private val password: String = "asdfghj",
+    private val password: String,
 ) {
 
     fun checkPassword() {
@@ -17,7 +17,10 @@ private class User(
 
 fun main() {
 
-    val user1 = User("qwerty")
+    val user1 = User(
+        "qwerty",
+        "qwerty",
+    )
 
     user1.checkPassword()
 
