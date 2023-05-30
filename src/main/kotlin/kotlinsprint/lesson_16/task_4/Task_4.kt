@@ -6,7 +6,7 @@ val statusList = listOf(
 
 private class Order(
     private val numberOfOrder: Int = 23,
-    var statusOfOrder: String,
+    private var statusOfOrder: String,
 ) {
 
     fun changeStatusOfOrder(newStatusOfOrder: String) {
@@ -17,17 +17,17 @@ private class Order(
     }
 }
 
-fun sendRequestToManager(statusOfOrder: String): String {
+fun sendRequestToManager(): String {
     val newStatusOfOrder = statusList[4]
 
-    println("Прошу изменить статус заказа \"$statusOfOrder\" на \"$newStatusOfOrder\".")
+    println("Прошу изменить текущий статус заказа на \"$newStatusOfOrder\".")
 
     return newStatusOfOrder
 }
 
 fun main() {
     val order = Order(statusOfOrder = statusList[3])
-    val newStatusOfOrder = sendRequestToManager(order.statusOfOrder)
+    val newStatusOfOrder = sendRequestToManager()
 
     order.changeStatusOfOrder(newStatusOfOrder)
 }
