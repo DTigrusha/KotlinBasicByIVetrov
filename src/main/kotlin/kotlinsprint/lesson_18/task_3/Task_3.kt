@@ -1,47 +1,80 @@
 package kotlinsprint.lesson_18.task_3
 
-open class Tamagotchi {
+abstract class Tamagotchi(
+    val name: String,
+) {
 
-    open fun printTamagotchiActivity() {}
+    abstract fun play()
+
+    abstract fun sleep()
+
+    abstract fun eat()
 }
 
 class Fox(
-    private val name: String,
-    private val activity: List<String> = listOf("играет", "спит", "ест ягоды"),
-) : Tamagotchi() {
+    name: String,
+    private val listOfActivities: List<String> = listOf("играет", "спит", "ест ягоды"),
+) : Tamagotchi(name) {
 
-    override fun printTamagotchiActivity() {
-        activity.forEach {
-            println("$name - $it")
-        }
+    override fun play() {
+        println("$name - ${listOfActivities[0]}")
+    }
+
+    override fun sleep() {
+        println("$name - ${listOfActivities[1]}")
+    }
+
+    override fun eat() {
+        println("$name - ${listOfActivities[2]}")
     }
 
 }
 
 class Dog(
-    private val name: String,
-    private val activity: List<String> = listOf("играет", "спит", "ест кости"),
-) : Tamagotchi() {
+    name: String,
+    private val listOfActivities: List<String> = listOf("играет", "спит", "ест кости"),
+) : Tamagotchi(name) {
 
-    override fun printTamagotchiActivity() {
-        activity.forEach {
-            println("$name - $it")
-        }
+    override fun play() {
+        println("$name - ${listOfActivities[0]}")
+    }
+
+    override fun sleep() {
+        println("$name - ${listOfActivities[1]}")
+    }
+
+    override fun eat() {
+        println("$name - ${listOfActivities[2]}")
     }
 
 }
 
 class Cat(
-    private val name: String,
-    private val activity: List<String> = listOf("играет", "спит", "ест рыбу"),
-) : Tamagotchi() {
+    name: String,
+    private val listOfActivities: List<String> = listOf("играет", "спит", "ест рыбу"),
+) : Tamagotchi(name) {
 
-    override fun printTamagotchiActivity() {
-        activity.forEach {
-            println("$name - $it")
-        }
+    override fun play() {
+        println("$name - ${listOfActivities[0]}")
     }
 
+    override fun sleep() {
+        println("$name - ${listOfActivities[1]}")
+    }
+
+    override fun eat() {
+        println("$name - ${listOfActivities[2]}")
+    }
+
+}
+
+fun printTamagotchiActivities(listOfTamagotchi: List<Tamagotchi>) {
+    listOfTamagotchi.forEach {
+        it.play()
+        it.sleep()
+        it.eat()
+        println()
+    }
 }
 
 fun main() {
@@ -52,10 +85,7 @@ fun main() {
 
     val listOfTamagotchi = listOf(fox, dog, cat)
 
-    listOfTamagotchi.forEach {
-        it.printTamagotchiActivity()
-        println()
-    }
+    printTamagotchiActivities(listOfTamagotchi)
 
 }
 
