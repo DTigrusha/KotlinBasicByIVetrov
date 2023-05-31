@@ -15,7 +15,7 @@ class RectangularBox(
     private val height: Int,
 ) : Box() {
 
-    override fun getBoxSquare(): Int = length * width
+    override fun getBoxSquare(): Int = 2 * ((length * width) + (length * height) + (width * height))
 
 }
 
@@ -23,7 +23,7 @@ class CubeBox(
     private val ribLength: Int,
 ) : Box() {
 
-    override fun getBoxSquare(): Int = (ribLength.toDouble().pow(2)).roundToInt()
+    override fun getBoxSquare(): Int = 6 * ((ribLength.toDouble().pow(2)).roundToInt())
 
 }
 
