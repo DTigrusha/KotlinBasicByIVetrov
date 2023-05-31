@@ -37,4 +37,6 @@ fun main() {
     user.login = "dfgshajd"
     user.password = "asdfgh"
 
+    println(user.password)
+
 }
