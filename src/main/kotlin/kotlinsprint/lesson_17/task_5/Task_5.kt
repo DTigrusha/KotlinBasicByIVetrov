@@ -1,36 +1,40 @@
 package kotlinsprint.lesson_17.task_5
 
-class User {
+class User(
+    login: String,
+    password: String,
+) {
 
-    var login: String = "qwerty"
+    var login: String = login
         set(value) {
             field = value
             println("Ваш логин изменен!")
         }
 
-    var password: String = ""
+    var password: String = password
         get() {
-            field = "qwerty"
+            var hiddenPassword = ""
             for (i in field) {
-                print("*")
+                hiddenPassword += "*"
             }
-            println()
-
-            return field
+            return hiddenPassword
         }
         set(value) {
-            if (value != field) {
-                println("Вы не можете изменить пароль.")
-            }
+            field = value
+
+            println("Вы не можете изменить пароль.")
         }
 
 }
 
 fun main() {
-    val user = User()
+    val user = User(
+        login = "qwerty",
+        password = "qwerty"
+
+    )
 
     user.login = "dfgshajd"
-
     user.password = "asdfgh"
 
 }
