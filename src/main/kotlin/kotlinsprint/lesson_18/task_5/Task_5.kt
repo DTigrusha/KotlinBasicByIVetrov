@@ -5,22 +5,22 @@ open class Figure {
 }
 
 class Dote(
-    private val x: Int,
-    private val y: Int,
+    val x: Int,
+    val y: Int,
 ) : Figure() {
     override val name: String = "точка"
 }
 
 class Square(
-    private val x: Int,
-    private val y: Int,
+    val x: Int,
+    val y: Int,
 ) : Figure() {
     override val name: String = "квадрат"
 }
 
 class Circle(
-    private val x: Float,
-    private val y: Float,
+    val x: Float,
+    val y: Float,
 ) : Figure() {
     override val name: String = "круг"
 }
@@ -30,19 +30,19 @@ class Screen {
     fun draw(
         figure: Dote,
     ) {
-        println("Рисуем фигуру: ${figure.name}.")
+        println("Рисуем фигуру \"${figure.name}\" с координатами: x = ${figure.x}, y = ${figure.y}.")
     }
 
     fun draw(
         figure: Square,
     ) {
-        println("Рисуем фигуру: ${figure.name}.")
+        println("Рисуем фигуру \"${figure.name}\" с координатами: x = ${figure.x}, y = ${figure.y}.")
     }
 
     fun draw(
         figure: Circle,
     ) {
-        println("Рисуем фигуру: ${figure.name}.")
+        println("Рисуем фигуру \"${figure.name}\" с координатами: x = ${figure.x}, y = ${figure.y}.")
     }
 
 }
