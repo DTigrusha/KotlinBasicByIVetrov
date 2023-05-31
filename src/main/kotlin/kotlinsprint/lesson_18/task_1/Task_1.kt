@@ -1,6 +1,9 @@
 package kotlinsprint.lesson_18.task_1
 
-class Order {
+class Order(
+    val number: Int = 0,
+    val goods: Any = "",
+) {
 
     fun printOrderInfo(
         number: Int,
