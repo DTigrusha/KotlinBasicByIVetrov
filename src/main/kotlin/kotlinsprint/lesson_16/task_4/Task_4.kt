@@ -1,11 +1,25 @@
 package kotlinsprint.lesson_16.task_4
 
-val statusList = listOf(
-    "заказ принят", "заказ передан в сборку", "заказ передан в службу доставки", "заказ доставляется", "заказ доставлен"
-)
+enum class Status {
+    NEW,
+    COMPLETING,
+    TRANSFERRING,
+    DELIVERING,
+    DELIVERED,
+}
+
+fun setStatus(status: Status): String {
+    return when (status) {
+        Status.NEW -> "заказ принят"
+        Status.COMPLETING -> "заказ передан в сборку"
+        Status.TRANSFERRING -> "заказ передан в службу доставки"
+        Status.DELIVERING -> "заказ доставляется"
+        Status.DELIVERED -> "заказ доставлен"
+    }
+}
 
 private class Order(
-    private val numberOfOrder: Int = 23,
+    private val numberOfOrder: Int,
     private var statusOfOrder: String,
 ) {
 
@@ -17,17 +31,22 @@ private class Order(
     }
 }
 
-fun sendRequestToManager(): String {
-    val newStatusOfOrder = statusList[4]
+fun sendRequestToManager(newStatusOfOrder: String) {
 
     println("Прошу изменить текущий статус заказа на \"$newStatusOfOrder\".")
 
-    return newStatusOfOrder
 }
 
 fun main() {
-    val order = Order(statusOfOrder = statusList[3])
-    val newStatusOfOrder = sendRequestToManager()
+    val order = Order(
+        numberOfOrder = 23,
+        statusOfOrder = setStatus(Status.NEW),
+    )
+
+    val newStatusOfOrder = setStatus(Status.COMPLETING)
+
+    sendRequestToManager(newStatusOfOrder)
 
     order.changeStatusOfOrder(newStatusOfOrder)
+
 }
