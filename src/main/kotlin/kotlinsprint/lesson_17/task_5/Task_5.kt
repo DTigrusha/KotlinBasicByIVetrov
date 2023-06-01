@@ -20,8 +20,6 @@ class User(
             return hiddenPassword
         }
         set(value) {
-            field = value
-
             println("Вы не можете изменить пароль.")
         }
 
@@ -30,8 +28,7 @@ class User(
 fun main() {
     val user = User(
         login = "qwerty",
-        password = "qwerty"
-
+        password = "qwerty",
     )
 
     user.login = "dfgshajd"
