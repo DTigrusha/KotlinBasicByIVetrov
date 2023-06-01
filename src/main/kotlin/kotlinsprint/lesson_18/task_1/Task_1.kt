@@ -1,8 +1,8 @@
 package kotlinsprint.lesson_18.task_1
 
 class Order(
-    val number: Int = 0,
-    val goods: Any = "",
+    val number: Int,
+    val goods: Any,
 ) {
 
     fun printOrderInfo(
@@ -23,8 +23,8 @@ class Order(
 
 fun main() {
 
-    val order1 = Order()
-    val order2 = Order()
+    val order1 = Order(1, "телевизор")
+    val order2 = Order(2, mutableListOf("миксер", "кофемолка", "кофеварка", "вспениватель"))
 
     order1.printOrderInfo(1, "телевизор")
     println()
