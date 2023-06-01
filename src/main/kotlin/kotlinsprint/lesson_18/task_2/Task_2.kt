@@ -1,38 +1,28 @@
 package kotlinsprint.lesson_18.task_2
 
 abstract class Dice(
-    val numberOfSides: Int,
+    private val numberOfSides: Int,
 ) {
 
-    abstract fun printNumber()
+    fun printNumber() {
+        println("На кубике с количеством граней: $numberOfSides выпало число: ${throwDie()}")
+    }
 
-    fun throwDie(): Int = (1..numberOfSides).random()
+    private fun throwDie(): Int = (1..numberOfSides).random()
 
 }
 
 class FourSidesDie(
     numberOfSides: Int = 4,
-) : Dice(numberOfSides) {
-    override fun printNumber() {
-        println("На кубике с количеством граней: $numberOfSides выпало число: ${throwDie()}")
-    }
-}
+) : Dice(numberOfSides)
 
 class SixSidesDie(
     numberOfSides: Int = 6,
-) : Dice(numberOfSides) {
-    override fun printNumber() {
-        println("На кубике с количеством граней: $numberOfSides выпало число: ${throwDie()}")
-    }
-}
+) : Dice(numberOfSides)
 
 class EightSidesDie(
     numberOfSides: Int = 8,
-) : Dice(numberOfSides) {
-    override fun printNumber() {
-        println("На кубике с количеством граней: $numberOfSides выпало число: ${throwDie()}")
-    }
-}
+) : Dice(numberOfSides)
 
 fun main() {
 
