@@ -1,7 +1,5 @@
 package kotlinsprint.lesson_19.task_5
 
-import java.util.*
-
 enum class Sex(val type: String) {
     MALE("м"),
     FEMALE("ж"),
@@ -36,12 +34,10 @@ fun main() {
 
     for (i in 0 until numberOfPersons) {
         println("Введите имя человека:")
-        val inputName = readln().lowercase(Locale.getDefault()).replaceFirstChar {
-            if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString()
-        }
+        val inputName = readln().lowercase()
 
         println("Введите его пол:")
-        val inputSex = readln().lowercase(Locale.getDefault())
+        val inputSex = readln().lowercase()
 
         val person = Person(
             name = inputName,
