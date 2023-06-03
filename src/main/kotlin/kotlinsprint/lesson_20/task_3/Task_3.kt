@@ -1,11 +1,11 @@
 package kotlinsprint.lesson_20.task_3
 
 class Player(
-    var isHasKey: Boolean,
+    var hasKey: Boolean,
 ) {
 
     val checkKey: () -> Unit = {
-        if (isHasKey) {
+        if (hasKey) {
             println("Игрок открыл дверь.")
         } else {
             println("Дверь заперта.")
@@ -19,7 +19,7 @@ fun main() {
 
     player.checkKey()
 
-    player.isHasKey = false
+    player.hasKey = false
 
     player.checkKey()
 
