@@ -9,7 +9,7 @@ fun main() {
         "кнопка: СЛЕДУЮЩИЙ ТРЕК"
     )
 
-    val listOfLambdaElements = listOfElements.map { "Нажат элемент \"$it\"" }
+    val listOfLambdaElements: List<() -> Unit> = listOf { listOfElements.map { "Нажат элемент \"$it\"" } }
 
     for (i in listOfLambdaElements.indices step 2)
         println(listOfLambdaElements[i])
