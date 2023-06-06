@@ -8,18 +8,24 @@ enum class Phrases(val description: String) {
     FIVES("Остальные жители планеты будут унижчтожены."),
 }
 
-class Robot {
+class Robot(
+    private var modifier: String = ""
+) {
 
-    private val randomPhrase: () -> String = { Phrases.values().random().description }
+    fun say() = setModifier(Phrases.values().random().description.reversed())
 
-    fun say() = setModifier(randomPhrase)
-
-    private fun setModifier(randomPhrase: () -> String) = randomPhrase.invoke().reversed()
+    fun setModifier(_modifier: String): String {
+        modifier = _modifier
+        return modifier
+    }
 
 }
 
 fun main() {
+
     val robot = Robot()
+
+    robot.setModifier(Phrases.values().random().description.reversed())
 
     println(robot.say())
 
