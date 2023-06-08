@@ -9,15 +9,15 @@ enum class Phrases(val description: String) {
 }
 
 class Robot(
-    var modifier: (String) -> String = { it }
+    private var modifier: (String) -> String = { it }
 ) {
 
     fun say() {
         val phraseToModify = Phrases.values().random().description
-        println(modifier.invoke(phraseToModify))
+        println(modifier(phraseToModify))
     }
 
-    private fun setPhraseModifier(modifier: (String) -> String) {
+    fun setModifier(modifier: (String) -> String) {
         this.modifier = modifier
     }
 
@@ -26,7 +26,8 @@ class Robot(
 fun main() {
 
     val robot = Robot()
-    robot.modifier = { it.reversed() }
+
+    robot.setModifier { it.reversed() }
     robot.say()
 
 }
