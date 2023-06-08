@@ -9,14 +9,16 @@ enum class Phrases(val description: String) {
 }
 
 class Robot(
-    private var modifier: String = ""
+    var modifier: (String) -> String = { it }
 ) {
 
-    fun say() = setModifier(Phrases.values().random().description.reversed())
+    fun say() {
+        val phraseToModify = Phrases.values().random().description
+        println(modifier.invoke(phraseToModify))
+    }
 
-    fun setModifier(_modifier: String): String {
-        modifier = _modifier
-        return modifier
+    private fun setPhraseModifier(modifier: (String) -> String) {
+        this.modifier = modifier
     }
 
 }
@@ -24,9 +26,7 @@ class Robot(
 fun main() {
 
     val robot = Robot()
-
-    robot.setModifier(Phrases.values().random().description.reversed())
-
-    println(robot.say())
+    robot.modifier = { it.reversed() }
+    robot.say()
 
 }
