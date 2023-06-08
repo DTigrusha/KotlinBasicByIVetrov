@@ -6,13 +6,14 @@ fun main() {
         "кнопка: СТОП",
         "кнопка: ПЕРЕМОТКА ВПЕРЕД",
         "кнопка:  ПЕРЕМОТКА НАЗАД",
-        "кнопка: СЛЕДУЮЩИЙ ТРЕК"
+        "кнопка: СЛЕДУЮЩИЙ ТРЕК",
     )
 
-        val listOfLambdaElements: List<() -> Unit> = buildList {
-        for (i in listOfElements.indices) {
-            add { listOfElements.map { println("Нажат элемент \"$it\"") } }
+    val listOfLambdaElements: List<() -> Unit> = listOfElements.map { { println("Нажат элемент \"$it\"") } }
+
+    for (i in listOfLambdaElements.indices) {
+        if (i % 2 == 0) {
+            listOfLambdaElements[i]()
         }
     }
-    listOfLambdaElements[0].invoke()
 }
